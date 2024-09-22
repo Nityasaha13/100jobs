@@ -67,11 +67,11 @@
                         @include('profile.includes.posts')
                     </div>
 
-                    <div class="profile-reviews tab">    
+                    <div class="profile-about tab">    
                         @include('profile.includes.about')
                     </div>
 
-                    <div class="profile-settings tab">
+                    <div class="profile-jobs tab">
                         <div class="account-setting">
                             @include('profile.includes.jobs')
                         </div>

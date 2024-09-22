@@ -19,7 +19,8 @@ class PostsController extends Controller
      */
     public function create()
     {
-        //
+        // dd("Create POST page");
+        return view('posts.create');
     }
 
     /**

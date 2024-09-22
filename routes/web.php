@@ -12,6 +12,7 @@ use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\User\PublicProfileController;
 use App\Http\Controllers\CandidatesController;
 use App\Http\Controllers\JobCategoryController;
+use App\Http\Controllers\PostsController;
 use App\Models\User;
 use App\Models\Job;
 use Illuminate\Support\Facades\Auth;
@@ -102,4 +103,7 @@ Route::group(['middleware' => 'auth'], function(){
     //Applicants
     Route::get('/{jobid}/candidates', [CandidatesController::class,'index'])->name('candidates');
 
+
+    //Posts
+    Route::get('/posts/create', [PostsController::class, 'create'])->name('create-post');
 });
