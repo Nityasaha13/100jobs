@@ -1,6 +1,12 @@
 <div class="card border-0">
 
     <div class="card-body p-4">
+        
+        @if(Auth::check())
+            <div class="header-section" style="margin:10px 0px; text-align:right">
+                <a href="{{route('profile')}}" class="btn btn-primary">Edit Profile</a>
+            </div>
+        @endif
         <h3 class="fs-4 mb-1">My Profile</h3>
         <div class="row">
             <div class="col-md-6 mb-1">
