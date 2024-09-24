@@ -18,32 +18,32 @@
 
             <div class="col-lg-9">
                 <div class="card border-0 shadow mb-4 ">
-                    <form action="{{route('create-post')}}" method="POST">
+                    <form action="{{route('save-post')}}" method="POST">
                         @csrf
                         @method('POST')
 
                         <div class="card-body card-form p-4">
-                            <h3 class="fs-4 mb-1">Job Details</h3>
+                            <h3 class="fs-4 mb-1">Create Post</h3>
                             <div class="row">
                                 <div class="col-md-12 mb-4">
                                     <label for="" class="mb-2">Title<span class="req">*</span></label>
-                                    <input type="text" placeholder="Job Title" id="title" name="role" class="form-control">
+                                    <input type="text" placeholder="Job Title" id="title" name="title" class="form-control">
                                 </div>
                             </div>
                             
                             <div class="row">                                
                                 <div class="col-md-12  mb-4">
                                     <label for="" class="mb-2">Content<span class="req">*</span></label>
-                                    <textarea class="form-control" name="description" id="description" cols="5" rows="5" placeholder="Description"></textarea>
+                                    <textarea class="form-control" name="content" id="content" cols="5" rows="5" placeholder="Description"></textarea>
                                 </div>
                                 <div class="col-md-12 mb-4">
                                     <label for="" class="mb-2">Photo/Video<span class="req">*</span></label>
-                                    <input type="file">
+                                    <input type="file" name="media">
                                 </div>
                             </div>
                         </div> 
                         <div class="card-footer  p-4">
-                            <input type="hidden" name="user_id" value="">
+                            <input type="hidden" name="user_id" value="{{ $user_id }}">
                             <button type="submit" class="btn btn-primary">Publish</button>
                         </div> 
                     </form>

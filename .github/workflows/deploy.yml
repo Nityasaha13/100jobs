@@ -1,0 +1,34 @@
+name: Deploy Laravel to EC2
+
+on:
+  push:
+    branches:
+      - main  # Set this to the branch you want to deploy
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up SSH agent
+      uses: webfactory/ssh-agent@v0.5.3
+      with:
+        ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
+
+    - name: Deploy to EC2
+      run: |
+        ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
+          cd /path/to/your/laravel-app
+          git pull origin main
+          composer install --no-interaction --prefer-dist --optimize-autoloader
+          php artisan migrate --force
+          php artisan config:cache
+          php artisan route:cache
+          php artisan view:cache
+          php artisan storage:link
+          sudo service php7.4-fpm reload  # Change the PHP version as per your setup
+          sudo service nginx reload  # Or apache2, depending on your web server
+        EOF

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PostsController extends Controller
@@ -19,8 +20,9 @@ class PostsController extends Controller
      */
     public function create()
     {
+        $user = auth()->user();
         // dd("Create POST page");
-        return view('posts.create');
+        return view('posts.create', ['user_id' => $user->id]);
     }
 
     /**
@@ -28,7 +30,9 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request;
+        dd($data);
+        return redirect(route('public-profile', auth()->user()->id));
     }
 
     /**

@@ -106,4 +106,5 @@ Route::group(['middleware' => 'auth'], function(){
 
     //Posts
     Route::get('/posts/create', [PostsController::class, 'create'])->name('create-post');
+    Route::post('/posts/save', [PostsController::class, 'store'])->name('save-post');
 });
