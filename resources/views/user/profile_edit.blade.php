@@ -1,6 +1,8 @@
 
 @extends('layouts.master')
 
+@section('title', 'Edit Profile')
+
 @section('content')
 
 <!-- Success Message -->

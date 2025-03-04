@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('title', 'Add Certification')
+
 @section('content')
 
 <!-- Success Message -->

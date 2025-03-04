@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@section('title')
+Job Details - {{$job->role}}
+@endsection
+
 @section('content')
 
 <section class="section-4 bg-2">    

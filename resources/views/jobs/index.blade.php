@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('title', 'All Jobs')
+
 @section('content')
 
 <section class="section-3 py-5 bg-2">

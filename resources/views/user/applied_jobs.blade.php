@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('title', 'Applied Jobs')
+
 @section('content')
 
 {{-- <h2 class="text-center">Welcome! {{ Auth::user()->name }}</h2> --}}
