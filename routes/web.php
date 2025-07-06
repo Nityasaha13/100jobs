@@ -106,4 +106,7 @@ Route::group(['middleware' => 'auth'], function(){
     //Applicants
     Route::get('/{jobid}/candidates', [CandidatesController::class,'index'])->name('candidates');
 
+
+    //Posts
+    Route::get('/posts/create', [PostsController::class, 'create'])->name('create-post');
 });

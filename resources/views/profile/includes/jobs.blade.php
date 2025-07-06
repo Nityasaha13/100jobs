@@ -1,6 +1,10 @@
 <div class="card border-0">
     <div class="card-body card-form">
-
+        @if(Auth::check())
+            <div class="header-section" style="margin:10px 0px; text-align:right">
+                <a href="{{route('post-job')}}" class="btn btn-primary">Post a Job</a>
+            </div>
+        @endif
         <div class="table-responsive">
             <table class="table ">
                 <thead class="bg-light">
