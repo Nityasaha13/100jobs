@@ -74,7 +74,9 @@ class JobsController extends Controller
         // dd($job);
         $employer = User::find($job->user_id);
 
-        return view('jobs/single_job',['job' => $job, 'employer' => $employer]);
+        $cuser = Auth::user();
+
+        return view('jobs/single_job',['job' => $job, 'employer' => $employer], ['current_user' => $cuser]);
     }
 
 
@@ -182,6 +184,40 @@ class JobsController extends Controller
         }
 
         return view('home', ['jobs' => $jobs]);
+    }
+
+
+    public function get_user_jobs($user_id, $job_id)
+    {
+        $user = User::find($user_id);
+        // $job = Job::find($job_id);
+
+        $sjobIds = $user->saved_jobs->pluck('job_id');
+        $alljobs = Job::whereIn('id', $sjobIds)->get();
+
+        // return response()->json($alljobs, 200);
+
+        if ($alljobs->isEmpty()) {
+            return response()->json(['message' => 'No saved jobs found'], 404);
+        }
+
+        foreach ($alljobs as $job) {
+            if ($job->id == $job_id) {
+                return response()->json(['message' => 'saved'], 200);
+            }
+        }
+    }
+
+
+    public function get_applied_jobs($user_id, $job_id){
+        $user = User::find($user_id);
+        $appliedJobs = $user->applied_on_jobs->pluck('job_id');
+
+        if ($appliedJobs->contains($job_id)) {
+            return response()->json(['message' => 'applied'], 200);
+        } else {
+            return response()->json(['message' => 'not applied'], 404);
+        }
     }
 
 }

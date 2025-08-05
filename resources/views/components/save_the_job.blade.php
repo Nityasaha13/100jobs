@@ -19,7 +19,7 @@
                   </div>
                   <div class="d-flex justify-content-end">
                     <input type="hidden" value="{{$job->id}}" name="job_id">
-                    <button type="submit" class="btn btn-primary mx-3">Submit</button>
+                    <button type="submit" class="btn btn-primary mx-3">Save</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                   </div>
 

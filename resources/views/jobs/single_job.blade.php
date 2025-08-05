@@ -49,7 +49,7 @@ Job Details - {{$job->role}}
                             </div>
                             <div class="jobs_right">
                                 <div class="apply_now">
-                                    <a class="heart_mark" href="#"> <i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                                    <a class="heart_mark" href="" id="save-job-heart"> <i class="fa fa-heart-o" aria-hidden="true"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -113,7 +113,7 @@ Job Details - {{$job->role}}
                         <div class="job_content pt-3">
                             <ul>
                                 <li>Name: <span>{{$job->company}}</span></li>
-                                <li>Website: <span><a href="#">{{$job->company_website}}</a></span></li>
+                                <li>Website: <span><a href="{{$job->company_website}}">{{$job->company_website}}</a></span></li>
                             </ul>
                         </div>
                     </div>
@@ -126,4 +126,57 @@ Job Details - {{$job->role}}
 @include('components.apply_for_job')
 @include('components.save_the_job')
 
+
+
+@endsection
+
+
+@section('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        const saveJobHeart = document.getElementById('save-job-heart');
+        const saveJobModal = new bootstrap.Modal(document.getElementById('save-the-job'));
+        const modalbody = document.querySelector('#save-the-job .modal-body');
+        const applymodalbody = document.querySelector('#apply-for-job .modal-body');
+
+        saveJobHeart.addEventListener('click', function(event) {
+            event.preventDefault();
+            saveJobModal.show();
+        });
+
+        @if(isset($current_user))
+            fetch('{{ route('api.user-jobs', ['uid' => $current_user->id, 'jid' => $job->id]) }}')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.message == 'saved') {
+                        // console.log(data);
+                        modalbody.innerHTML = `
+                            <div class="responce-message">
+                                This job is already saved. Go to <a href="{{ route('saved-jobs') }}">Saved Jobs</a>.
+                            </div>
+                        `;
+                        saveJobHeart.style.color = '#fff';
+                        saveJobHeart.style.background = "#00D363";
+                    }
+                });
+
+            fetch('{{ route('api.applied-jobs', ['uid' => $current_user->id, 'jid' => $job->id]) }}')
+                .then(response => response.json())
+                .then(data => {
+                    // console.log(data);
+                    if (data.message == 'applied') {
+                        applymodalbody.innerHTML = `
+                            <div class="responce-message">
+                                You have already applied for this job. Go to <a href="{{ route('applied-jobs') }}">Applied Jobs</a>.
+                            </div>
+                        `;
+                    }
+                });
+        @else
+            modalbody.innerHTML = "Please log in to save this job.";
+            applymodalbody.innerHTML = "Please log in to apply for this job.";
+        @endif
+    });
+</script>
 @endsection

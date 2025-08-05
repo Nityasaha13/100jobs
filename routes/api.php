@@ -21,3 +21,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::get('/jobs', [JobsController::class, 'get_all_jobs'])->name('api.all-jobs');
+Route::get('/saved/{uid}/{jid}', [JobsController::class, 'get_user_jobs'])->name('api.user-jobs');
+Route::get('/applied/{uid}/{jid}', [JobsController::class, 'get_applied_jobs'])->name('api.applied-jobs');
