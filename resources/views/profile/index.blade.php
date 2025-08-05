@@ -43,10 +43,10 @@
 
                 <div class="social-menu">
                     <ul>
-                        <li><a href="" target="_blank"><i class="fab fa-github"></i></a></li>
+                        {{-- <li><a href="" target="_blank"><i class="fab fa-github"></i></a></li>
                         <li><a href="" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                        <li><a href="" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
-                        <li><a href="" target="_blank"><i class="fa-solid fa-link"></i></a></li>
+                        <li><a href="" target="_blank"><i class="fab fa-linkedin-in"></i></a></li> --}}
+                        <li><a href="{{ asset('storage/' . $user->resume) }}" target="_blank"><i class="fa-solid fa-link"></i>Resume</a></li>
                     </ul>
                 </div>
                 </div>
@@ -56,21 +56,21 @@
         
                 <div class="nav">
                     <ul>
-                        <li onclick="tabs(0)" class="user-post active">Posts</li>
-                        <li onclick="tabs(1)" class="user-review">About</li>
+                        <li onclick="tabs(0)" class="user-review active">About</li>
+                        <li onclick="tabs(1)" class="user-post">Posts</li>
                         <li onclick="tabs(2)" class="user-setting"> Jobs</li>
                     </ul>
                 </div>
 
                 <div class="profile-body">
-                    <div class="profile-posts tab">
-                        @include('profile.includes.posts')
-                    </div>
-
                     <div class="profile-reviews tab">    
                         @include('profile.includes.about')
                     </div>
 
+                    <div class="profile-posts tab">
+                        @include('profile.includes.posts')
+                    </div>
+              
                     <div class="profile-settings tab">
                         <div class="account-setting">
                             @include('profile.includes.jobs')
