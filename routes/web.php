@@ -48,6 +48,10 @@ Route::get('/category/{name}',[JobCategoryController::class, 'category_page'])->
 Route::get('/user/{id}', [PublicProfileController::class, 'index'])->name('public-profile');
 
 
+//Create feature of users can posts, comment on posts, likes on post, and share posts
+//Need to create a new controller for this feature and add routes for it. NEW database tables are also needed for this feature.
+
+
 Route::group(['middleware' => 'auth'], function(){
 
     //Show profile pages
