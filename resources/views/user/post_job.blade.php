@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('title', ' Pofile - Post Job')
+
 @section('content')
 
 {{-- <h2 class="text-center">Welcome! {{ Auth::user()->name }}</h2> --}}
@@ -35,26 +37,14 @@
                                 </div>
                                 <div class="col-md-6  mb-4">
                                     <label for="" class="mb-2">Category<span class="req">*</span></label>
-                                    <select name="category" id="category" class="form-select">
-                                        <option>Select a Category</option>
-                                        <option>Engineering</option>
-                                        <option>Accountant</option>
-                                        <option>Information Technology</option>
-                                        <option>Fashion designing</option>
-                                    </select>
+                                    @include('components.job_category_select')
                                 </div>
                             </div>
                             
                             <div class="row">
                                 <div class="col-md-6 mb-4">
                                     <label for="" class="mb-2">Job Type<span class="req">*</span></label>
-                                    <select name="job_type" class="form-select">
-                                        <option>Select Type</option>
-                                        <option>Full Time</option>
-                                        <option>Part Time</option>
-                                        <option>Remote</option>
-                                        <option>Freelance</option>
-                                    </select>
+                                    @include('components.job_type_select')
                                 </div>
                                 <div class="mb-4 col-md-6">
                                     <label for="" class="mb-2">Location<span class="req">*</span></label>

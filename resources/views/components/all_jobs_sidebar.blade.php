@@ -13,13 +13,7 @@
 
             <div class="mb-4">
                 <h2>Category</h2>
-                <select name="category" id="category" class="form-control">
-                    <option value="">Select a Category</option>
-                    <option value="Engineering">Engineering</option>
-                    <option value="Accountant">Accountant</option>
-                    <option value="Information Technology">Information Technology</option>
-                    <option value="Fashion designing">Fashion Designing</option>
-                </select>
+                @include('components.job_category_select')
             </div>                   
 
             <div class="mb-4">

@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('title', 'All Jobs')
+
 @section('content')
 
 <section class="section-3 py-5 bg-2">
@@ -63,8 +65,6 @@
             timer = setTimeout(fetchResults, 400);
         });
 
-        // Initial fetch to load jobs when the page loads
-        fetchResults();
     });
 </script>
 @endsection

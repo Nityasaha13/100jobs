@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('title') User - Dashboard @endsection
+
 @section('content')
 
 {{-- <h2 class="text-center">Welcome! {{ $user->name }}</h2> --}}

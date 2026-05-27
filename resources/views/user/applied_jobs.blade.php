@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('title', 'Applied Jobs')
+
 @section('content')
 
 {{-- <h2 class="text-center">Welcome! {{ Auth::user()->name }}</h2> --}}
@@ -36,7 +38,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="border-0">
-                                    @foreach($jobs->userappliedjobs as $job)
+                                    @foreach($jobs as $job)
 
                                         <tr class="active">
                                             <td>

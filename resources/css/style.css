@@ -9169,13 +9169,13 @@ h1 span, h2 span, h3 span, h4 span, h5 span, h6 span {
   font-size: inherit;
   font-family: inherit;
   display: inline-block;
-  color: #A8DF8E;
+  color: #e40046;
 }
 h1 {
   font-size: 66px;
 }
 h1 span {
-  color: #A8DF8E;
+  color: #e40046;
 }
 h2 {
   font-size: 30px;
@@ -9185,7 +9185,7 @@ h2 {
 h2:after {
   content: "";
   position: absolute;
-  background-color: #A8DF8E;
+  background-color: #e40046;
   width: 70px;
   height: 4px;
   bottom: 0px;
@@ -9222,7 +9222,7 @@ p span, q span {
   font-size: inherit;
 }
 a {
-  color: #A8DF8E;
+  color: #e40046;
 }
 a:hover {
   color: #000;
@@ -9250,8 +9250,8 @@ button, .btn {
 }
 button.btn-primary, .btn.btn-primary {
   color: #ffffff;
-  background: #A8DF8E;
-  border: 2px solid #A8DF8E;
+  background: #e40046;
+  border: 2px solid #e40046;
 }
 button.btn-primary:hover, button.btn-primary:focus, .btn.btn-primary:hover, .btn.btn-primary:focus {
   border: 2px solid #242021;
@@ -9263,13 +9263,13 @@ button.btn-secondary, .btn.btn-secondary {
   border: 2px solid #242021;
 }
 button.btn-secondary:hover, button.btn-secondary:focus, .btn.btn-secondary:hover, .btn.btn-secondary:focus {
-  border: 2px solid #A8DF8E;
-  background: #A8DF8E;
+  border: 2px solid #e40046;
+  background: #e40046;
   color: #ffffff;
 }
 button.btn-outline-primary, .btn.btn-outline-primary {
-  color: #A8DF8E;
-  border: 2px solid #A8DF8E;
+  color: #e40046;
+  border: 2px solid #e40046;
 }
 button.btn-outline-primary:hover, button.btn-outline-primary:focus, .btn.btn-outline-primary:hover, .btn.btn-outline-primary:focus {
   background: transparent;
@@ -9574,7 +9574,7 @@ label .req {
   font-size: 1em;
 }
 footer .nav-link {
-  color: #A8DF8E;
+  color: #e40046;
 }
 .section-5 .card .thead, .section-5 .card tbody, .section-5 .card tfoot, .section-5 .card tr, .section-5 .card td, .section-5 .card th {
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
@@ -9600,7 +9600,7 @@ footer .nav-link {
   padding: 10px 40px 10px 15px;
 }
 .section-5 .card .dropdown-menu .dropdown-item:hover {
-  background: #A8DF8E;
+  background: #e40046;
   color: #ffffff;
 }
 .section-5 .card .dropdown-menu .dropdown-item:hover i {
@@ -9620,7 +9620,7 @@ footer .nav-link {
   color: #000;
 }
 .section-5 .account-nav ul li a:hover {
-  color: #A8DF8E;
+  color: #e40046;
 }
 @font-face {
   font-family: 'fontello';
@@ -10023,3 +10023,72 @@ footer .nav-link {
   content: '';
 }
 /* '' */
+
+
+/* Job search form */
+
+div#search-results {
+  background: white;
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  padding: 10px 30px 20px 30px;
+  font-size: 20px;
+  width: 90%;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.section-results {
+  position: relative;
+}
+
+.section-results .container {
+  display: flex;
+  justify-content: center;
+}
+
+.job-item.results h5:hover {
+  background-color: #fafafa;
+}
+
+.job-item.results h5 {
+  padding: 5px 5px;
+  font-size: 20px;
+  margin: 2px 0px;
+}
+
+.job-item.view-alljobs {
+  text-align: center;
+}
+
+
+/* loader */
+.job-search .loader {
+  animation: rotate 2s linear infinite;
+}
+.job-search .path {
+  stroke: #007bff;
+  stroke-linecap: round;
+  animation: dash 1.5s ease-in-out infinite;
+}
+@keyframes rotate {
+  100% {
+      transform: rotate(360deg);
+  }
+}
+@keyframes dash {
+  0% {
+      stroke-dasharray: 1, 150;
+      stroke-dashoffset: 0;
+  }
+  50% {
+      stroke-dasharray: 90, 150;
+      stroke-dashoffset: -35;
+  }
+  100% {
+      stroke-dasharray: 90, 150;
+      stroke-dashoffset: -124;
+  }
+}

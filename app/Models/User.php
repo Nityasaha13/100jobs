@@ -76,4 +76,10 @@ class User extends Authenticatable
         return $this->hasMany(AppliedJobs::class);
     }
 
+    // User saved jobs pivot table
+    public function saved_jobs()
+    {
+        return $this->hasMany(SavedJobs::class);
+    }
+
 }

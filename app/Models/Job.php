@@ -41,5 +41,18 @@ class Job extends Model
         return $this->belongsToMany(Job::class, 'applied_jobs', 'user_id', 'job_id')
                     ->withTimestamps();
     }
+
+    
+    public function savedusers()
+    {
+        return $this->belongsToMany(User::class, 'saved_jobs', 'job_id', 'user_id')
+                    ->withTimestamps();
+    }
+
+    public function savedjobs()
+    {
+        return $this->belongsToMany(Job::class, 'saved_jobs', 'job_id', 'user_id')
+                    ->withTimestamps();
+    }
     
 }

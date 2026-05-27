@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('title', 'Edit Education')
+
 @section('content')
 
 <!-- Success Message -->

@@ -9,8 +9,10 @@ use App\Http\Controllers\JobsController;
 use App\Http\Controllers\UpdateProfileController;
 use App\Http\Controllers\UserAvatarController;
 use App\Http\Controllers\UserProfileController;
+use App\Http\Controllers\User\PublicProfileController;
 use App\Http\Controllers\CandidatesController;
 use App\Http\Controllers\JobCategoryController;
+use App\Http\Controllers\SavedJobsController;
 use App\Models\User;
 use App\Models\Job;
 use Illuminate\Support\Facades\Auth;
@@ -34,12 +36,20 @@ Auth::routes();
 //Jobs
 Route::get('/all-jobs',[JobsController::class, 'index'])->name('jobs');
 Route::get('/search-result', [JobsController::class, 'search_job'])->name('search');
+Route::get('/home-search', [JobsController::class, 'home_search_job'])->name('home-search');
 Route::get('/job/{id}',[JobsController::class, 'show'])->name('single-job'); 
 
 
 //Jobs Category
 Route::get('/category/{name}',[JobCategoryController::class, 'category_page'])->name('category');
 
+
+//Public user profile
+Route::get('/user/{id}', [PublicProfileController::class, 'index'])->name('public-profile');
+
+
+//Create feature of users can posts, comment on posts, likes on post, and share posts
+//Need to create a new controller for this feature and add routes for it. NEW database tables are also needed for this feature.
 
 
 Route::group(['middleware' => 'auth'], function(){
@@ -93,6 +103,9 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/submit-application',[ApplyJobsController::class,'apply'])->name('submit-job-application');
     Route::get('/remove-appliedjob/{jobid}', [ApplyJobsController::class, 'delete'])->name('remove-appliedjob');
 
+    //Save and remove saved jobs
+    Route::post('/save-job', [SavedJobsController::class, 'save_job'])->name('save-job');
+    Route::get('/remove-savedjob/{jobid}', [SavedJobsController::class, 'remove_saved_job'])->name('remove-savedjob');
     
     //Applicants
     Route::get('/{jobid}/candidates', [CandidatesController::class,'index'])->name('candidates');

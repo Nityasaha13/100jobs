@@ -16,9 +16,17 @@ class JobsController extends Controller
      */
     public function index()
     {
-        $jobs=Job::all(); 
+        $jobs = Job::orderBy('created_at', 'desc')->get();
         
         return view('jobs/index', ['jobs' => $jobs]);
+    }
+
+
+    public function get_all_jobs()
+    {
+        $jobs = Job::orderBy('created_at', 'desc')->get();
+        
+        return $jobs;
     }
 
     
@@ -66,7 +74,9 @@ class JobsController extends Controller
         // dd($job);
         $employer = User::find($job->user_id);
 
-        return view('jobs/single_job',['job' => $job, 'employer' => $employer]);
+        $cuser = Auth::user();
+
+        return view('jobs/single_job',['job' => $job, 'employer' => $employer], ['current_user' => $cuser]);
     }
 
 
@@ -151,5 +161,63 @@ class JobsController extends Controller
         return view('components.job_list', ['jobs' => $jobs]);
     }
 
+    public function home_search_job(Request $request)
+    {
+        $query = Job::query();
+
+        if ($request->filled('keywords')) {
+            $query->where('role', 'like', '%' . $request->input('keywords') . '%');
+        }
+
+        if ($request->filled('location')) {
+            $query->where('location', 'like', '%' . $request->input('location') . '%');
+        }
+
+        if ($request->filled('category')) {
+            $query->where('category', $request->input('category'));
+        }
+
+        $jobs = $query->orderBy('created_at', 'desc')->get();
+
+        if ($request->ajax()) {
+            return view('components.home_job_search_results', ['jobs' => $jobs])->render();
+        }
+
+        return view('home', ['jobs' => $jobs]);
+    }
+
+
+    public function get_user_jobs($user_id, $job_id)
+    {
+        $user = User::find($user_id);
+        // $job = Job::find($job_id);
+
+        $sjobIds = $user->saved_jobs->pluck('job_id');
+        $alljobs = Job::whereIn('id', $sjobIds)->get();
+
+        // return response()->json($alljobs, 200);
+
+        if ($alljobs->isEmpty()) {
+            return response()->json(['message' => 'No saved jobs found'], 404);
+        }
+
+        foreach ($alljobs as $job) {
+            if ($job->id == $job_id) {
+                return response()->json(['message' => 'saved'], 200);
+            }
+        }
+    }
+
+
+    public function get_applied_jobs($user_id, $job_id){
+        $user = User::find($user_id);
+        $appliedJobs = $user->applied_on_jobs->pluck('job_id');
+
+        if ($appliedJobs->contains($job_id)) {
+            return response()->json(['message' => 'applied'], 200);
+        } else {
+            return response()->json(['message' => 'not applied'], 404);
+        }
+    }
 
 }
