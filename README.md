@@ -29,5 +29,6 @@ php artisan key:generate
 
 php artisan migrate
 php artisan serve
+```
+<img width="1731" height="2386" alt="Screenshot_27-5-2026_233856_127 0 0 1" src="https://github.com/user-attachments/assets/7eace43c-5b07-49b4-b9f9-108a946e19b1" />
 
-<img width="1731" height="2386" alt="Screenshot_27-5-2026_233856_127 0 0 1" src="https://github.com/user-attachments/assets/1b540c24-9e0f-4990-8394-44c4ad7d52b3" />
