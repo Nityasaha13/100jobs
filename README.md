@@ -1,6 +1,33 @@
-## 100jobs - apply for jobs and hire talent from single account
+# 100jobs - Apply for Jobs & Hire Talent
 
-<h3>About this project</h3>
-<p>Job Portal made in Laravel. User can hire or apply for jobs easily from single profile.</p>
-<p>User can post job vacancies and also can search and apply for available jobs.</p>
+A modern job portal built with Laravel where users can both hire talent and apply for jobs using a single account.
 
+## Features
+
+- User authentication & profiles
+- Post and manage job vacancies
+- Search and apply for jobs
+- Hire candidates from the same account
+- Responsive and clean UI
+
+## Tech Stack
+
+- Laravel
+- PHP
+- MySQL
+- Bootstrap / Tailwind CSS
+
+## Installation
+
+```bash
+git clone <repository-url>
+cd 100jobs
+
+composer install
+cp .env.example .env
+php artisan key:generate
+
+php artisan migrate
+php artisan serve
+
+<img width="1731" height="2386" alt="Screenshot_27-5-2026_233856_127 0 0 1" src="https://github.com/user-attachments/assets/1b540c24-9e0f-4990-8394-44c4ad7d52b3" />
