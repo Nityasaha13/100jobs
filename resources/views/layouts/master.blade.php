@@ -40,7 +40,7 @@
 
     <main class="container my-4">
         @yield('content')
-    </main>
+    </main> 
     
     
     @include('layouts.partials.footer')
