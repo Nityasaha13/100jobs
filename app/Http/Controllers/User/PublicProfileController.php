@@ -12,9 +12,8 @@ class PublicProfileController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(string $id)
+    public function index(User $user)
     {
-        $user = User::find($id);
         return view('profile.index', ['user' => $user]);
     }
 

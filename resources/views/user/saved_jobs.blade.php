@@ -46,7 +46,7 @@
                                             </td>
                                             <td>{{$job->company}}</td>
                                             <td>{{$job->location}}</td>
-                                            <td><a href="{{route('single-job',$job->id)}}"> <i class="fa fa-eye" aria-hidden="true"></i> View Job</a></td>
+                                            <td><a href="{{route('single-job',$job->slug)}}"> <i class="fa fa-eye" aria-hidden="true"></i> View Job</a></td>
                                             
                                             <td>
                                                 <div class="action-dots">
@@ -54,7 +54,7 @@
                                                         <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
                                                     </a>
                                                     <ul class="dropdown-menu dropdown-menu-end">
-                                                        <li><a class="dropdown-item" href="{{route('remove-savedjob',$job->id)}}"><i class="fa fa-trash" aria-hidden="true"></i> Remove</a></li>
+                                                        <li><a class="dropdown-item" href="{{route('remove-savedjob',$job->slug)}}"><i class="fa fa-trash" aria-hidden="true"></i> Remove</a></li>
                                                     </ul>
                                                 </div>
                                             </td>

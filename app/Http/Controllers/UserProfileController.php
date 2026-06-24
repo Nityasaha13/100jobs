@@ -41,7 +41,7 @@ class UserProfileController extends Controller
 
         $jobIds = $user->applied_on_jobs->pluck('job_id');  
         $jobs = Job::whereIn('id', $jobIds)->get(); 
-        $jobs = $jobs->isEmpty() ? 'null' : $jobs;
+        $jobs = $jobs->isEmpty() ? array() : $jobs;
 
         // dd($jobs);
         

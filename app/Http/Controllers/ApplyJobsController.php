@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Job;
 use App\Models\AppliedJobs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -42,13 +43,13 @@ class ApplyJobsController extends Controller
     }
 
 
-    public function delete(string $id){
-
+    public function delete(Job $job){
         $user = Auth::user();
-        $applied_job = AppliedJobs::where('job_id', $id)->where('user_id', $user->id)->first();
+        $applied_job = AppliedJobs::where('job_id', $job->id)->where('user_id', $user->id)->first();
 
-        // dd($applied_job);
-        $applied_job->delete();
+        if ($applied_job) {
+            $applied_job->delete();
+        }
         
         return back();
     }

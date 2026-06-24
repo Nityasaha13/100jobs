@@ -14,7 +14,7 @@
                     @foreach($user->jobs as $job)
                         <tr class="active">
                             <td>
-                                <div class="job-name fw-500"><a href="{{route('single-job',$job->id)}}">{{$job->role}}</a></div>
+                                <div class="job-name fw-500"><a href="{{route('single-job',$job->slug)}}">{{$job->role}}</a></div>
                             </td>
                             <td>{{$job->company}}</td>
                             <td>{{$job->location}}</td>

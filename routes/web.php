@@ -37,7 +37,7 @@ Auth::routes();
 Route::get('/all-jobs',[JobsController::class, 'index'])->name('jobs');
 Route::get('/search-result', [JobsController::class, 'search_job'])->name('search');
 Route::get('/home-search', [JobsController::class, 'home_search_job'])->name('home-search');
-Route::get('/job/{id}',[JobsController::class, 'show'])->name('single-job'); 
+Route::get('/job/{job}',[JobsController::class, 'show'])->name('single-job'); 
 
 
 //Jobs Category
@@ -45,7 +45,7 @@ Route::get('/category/{name}',[JobCategoryController::class, 'category_page'])->
 
 
 //Public user profile
-Route::get('/user/{id}', [PublicProfileController::class, 'index'])->name('public-profile');
+Route::get('/user/{user}', [PublicProfileController::class, 'index'])->name('public-profile');
 
 
 //Create feature of users can posts, comment on posts, likes on post, and share posts
@@ -94,20 +94,20 @@ Route::group(['middleware' => 'auth'], function(){
 
     //For jobs
     Route::post('/create-job',[JobsController::class,'store'])->name('create-job');
-    Route::get('/edit-job/{jobid}',[JobsController::class,'edit'])->name('edit-job');
-    Route::put('/update-job/{jobid}',[JobsController::class,'update'])->name('update-job');
-    Route::get('/delete-job/{jobid}',[JobsController::class,'destroy'])->name('delete-job');
+    Route::get('/edit-job/{job}',[JobsController::class,'edit'])->name('edit-job');
+    Route::put('/update-job/{job}',[JobsController::class,'update'])->name('update-job');
+    Route::get('/delete-job/{job}',[JobsController::class,'destroy'])->name('delete-job');
 
 
     //For applied jobs
     Route::post('/submit-application',[ApplyJobsController::class,'apply'])->name('submit-job-application');
-    Route::get('/remove-appliedjob/{jobid}', [ApplyJobsController::class, 'delete'])->name('remove-appliedjob');
+    Route::get('/remove-appliedjob/{job}', [ApplyJobsController::class, 'delete'])->name('remove-appliedjob');
 
     //Save and remove saved jobs
     Route::post('/save-job', [SavedJobsController::class, 'save_job'])->name('save-job');
-    Route::get('/remove-savedjob/{jobid}', [SavedJobsController::class, 'remove_saved_job'])->name('remove-savedjob');
+    Route::get('/remove-savedjob/{job}', [SavedJobsController::class, 'remove_saved_job'])->name('remove-savedjob');
     
     //Applicants
-    Route::get('/{jobid}/candidates', [CandidatesController::class,'index'])->name('candidates');
+    Route::get('/{job}/candidates', [CandidatesController::class,'index'])->name('candidates');
 
 });

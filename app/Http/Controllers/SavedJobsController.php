@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Job;
 use App\Models\SavedJobs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -33,12 +34,12 @@ class SavedJobsController extends Controller
         return back()->with('message', 'Job saved successfully.');
     }
 
-    public function remove_saved_job($jobid)
+    public function remove_saved_job(Job $job)
     {
         $user_id = auth()->user()->id;
 
         // Find the saved job
-        $savedJob = SavedJobs::where('user_id', $user_id)->where('job_id', $jobid)->first();
+        $savedJob = SavedJobs::where('user_id', $user_id)->where('job_id', $job->id)->first();
 
         if (!$savedJob) {
             return back()->with('message', 'Job not found in saved jobs.');

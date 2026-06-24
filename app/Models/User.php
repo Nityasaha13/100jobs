@@ -28,6 +28,7 @@ class User extends Authenticatable
         'country',
         'resume',
         'password',
+        'slug',
     ];
 
     /**
@@ -48,6 +49,49 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Boot the model.
+     */
+    protected static function booted()
+    {
+        static::creating(function ($model) {
+            if (empty($model->slug)) {
+                $model->slug = static::generateSlug($model->name);
+            }
+        });
+
+        static::updating(function ($model) {
+            if ($model->isDirty('name') && !$model->isDirty('slug')) {
+                $model->slug = static::generateSlug($model->name);
+            }
+        });
+    }
+
+    /**
+     * Generate a unique slug.
+     */
+    private static function generateSlug($name)
+    {
+        $slug = \Illuminate\Support\Str::slug($name);
+        $originalSlug = $slug;
+        $count = 1;
+
+        while (static::where('slug', $slug)->exists()) {
+            $slug = $originalSlug . '-' . $count;
+            $count++;
+        }
+
+        return $slug;
+    }
+
+    /**
+     * Get the route key for the model.
+     */
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 
 
     public function educations()
