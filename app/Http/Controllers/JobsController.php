@@ -68,12 +68,9 @@ class JobsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Job $job)
     {
-        $job = Job::find($id);
-        // dd($job);
         $employer = User::find($job->user_id);
-
         $cuser = Auth::user();
 
         return view('jobs/single_job',['job' => $job, 'employer' => $employer], ['current_user' => $cuser]);
@@ -83,23 +80,21 @@ class JobsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Job $job)
     {
-        $job = Job::find($id);
-        $user=  Auth::user(); 
-        return view('jobs.edit' , ['job' => $job, 'user' => $user]);
+        $user = Auth::user(); 
+        return view('jobs.edit', ['job' => $job, 'user' => $user]);
     }
 
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Job $job)
     {
-        $data =  $request;
-        $job = Job::find($id);
+        $data = $request;
         
-        $job -> update([
+        $job->update([
             'role' => $data['role'],
             'company' => $data['company'],
             'company_website' => $data['company_website'],
@@ -112,18 +107,16 @@ class JobsController extends Controller
             'qualification' => $data['qualification']
         ]);
 
-        return back()->with('message' , 'Updated');
+        return back()->with('message', 'Updated');
     }
 
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Job $job)
     {
-        $job = Job::find($id);
-        $job -> delete();
-
+        $job->delete();
         return back();
     }
 

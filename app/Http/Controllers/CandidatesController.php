@@ -9,12 +9,7 @@ use Illuminate\Http\Request;
 
 class CandidatesController extends Controller
 {
-    public function index(string $id){
-
-        $jobid= $id;
-
-        $candidates = Job::with("appliedusers")->where('id' , $jobid)->first();
-
-        return view('candidates.index', ['candidates' => $candidates->appliedusers]);
+    public function index(Job $job){
+        return view('candidates.index', ['candidates' => $job->appliedusers]);
     }
 }

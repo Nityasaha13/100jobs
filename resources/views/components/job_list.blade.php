@@ -24,7 +24,7 @@
                         <!-- Spacer div to push the button to the bottom -->
                         <div class="mt-auto">
                             <div class="d-grid mt-3">
-                                <a href="{{route('single-job', $job->id)}}" class="btn btn-primary btn-lg">Details</a>
+                                <a href="{{route('single-job', $job->slug)}}" class="btn btn-primary btn-lg">Details</a>
                             </div>
                         </div>
                     </div>

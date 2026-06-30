@@ -24,7 +24,7 @@
 
             <div class="col-lg-9">
                 <div class="card border-0 shadow mb-4 ">
-                    <form action="{{route('update-job', $job->id)}}" method="POST">
+                    <form action="{{route('update-job', $job->slug)}}" method="POST">
                         @csrf
                         @method('PUT')
 

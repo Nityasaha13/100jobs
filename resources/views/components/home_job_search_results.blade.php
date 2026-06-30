@@ -1,7 +1,7 @@
 @if($jobs->count())
     @foreach($jobs as $job)
         <div class="job-item results">
-            <a href = {{route('single-job', $job->id)}}>
+            <a href = {{route('single-job', $job->slug)}}>
                 <h5>{{ $job->role }}</h5>
             </a>
         </div>

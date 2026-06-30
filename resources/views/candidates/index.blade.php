@@ -32,7 +32,7 @@
                         @foreach($candidates as $applicant)
                             <tr class="active">
                                 <td>
-                                    <div class="job-name fw-500"><a href="{{ '/user/' . $applicant->id  }}">{{$applicant->name}}</a></div>
+                                    <div class="job-name fw-500"><a href="{{ route('public-profile', $applicant->slug) }}">{{$applicant->name}}</a></div>
                                 </td>
                                 <td>{{$applicant->contact}}</td>
                                 <td>{{$applicant->email}}</td>
