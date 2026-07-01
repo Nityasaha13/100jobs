@@ -8,9 +8,12 @@
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="{{route('home')}}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{{route('posts')}}">Feed</a>
                 </li>	
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="{{route('jobs')}}">Find Jobs</a>
+                    <a class="nav-link" aria-current="page" href="{{route('jobs')}}">Jobs</a>
                 </li>
                 <!-- Authentication Links -->
                 @guest
