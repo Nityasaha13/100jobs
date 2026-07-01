@@ -32,6 +32,19 @@ class UserProfileController extends Controller
         return view('user/my_jobs', compact('user'));
     }
 
+    public function my_posts()
+    {
+        $user=  Auth::user(); 
+        return view('user/my_posts', compact('user'));
+    }
+
+    public function write_post()
+    {
+        $user=  Auth::user(); 
+        // $jobs=Job::all();
+        return view('user/write_post', ['user' => $user]);
+    }
+
 
     public function applied_jobs()
     {

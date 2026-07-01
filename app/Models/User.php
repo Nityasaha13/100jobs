@@ -114,6 +114,11 @@ class User extends Authenticatable
         return $this->hasMany(Job::class);
     }
 
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+
     // User applied on which jobs pivot table
     public function applied_on_jobs()
     {

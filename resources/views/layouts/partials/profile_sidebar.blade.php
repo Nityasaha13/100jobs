@@ -16,8 +16,11 @@
                     <a href="{{ route('profile') }}">Profile Settings</a>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                    <a href="{{ route('post-job') }}">Post a Job</a>
+                    <a href="{{ route('my-posts') }}">My Posts</a>
                 </li>
+                {{-- <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                    <a href="{{ route('post-job') }}">Post a Job</a>
+                </li>    --}}
                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                     <a href="{{ route('my-jobs') }}">My Jobs</a>
                 </li>

@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', ' Pofile - Post Job')
+@section('title', 'Profile - Post Job')
 
 @section('content')
 
@@ -12,7 +12,8 @@
             <div class="col">
                 <nav aria-label="breadcrumb" class=" rounded-3 p-3 mb-4">
                     <ol class="breadcrumb mb-0">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('profile') }}">Profile</a></li>
                         <li class="breadcrumb-item active">Post a Job</li> 
                     </ol>
                 </nav>

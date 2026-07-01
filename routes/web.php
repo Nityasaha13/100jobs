@@ -13,6 +13,7 @@ use App\Http\Controllers\User\PublicProfileController;
 use App\Http\Controllers\CandidatesController;
 use App\Http\Controllers\JobCategoryController;
 use App\Http\Controllers\SavedJobsController;
+use App\Http\Controllers\PostController;
 use App\Models\User;
 use App\Models\Job;
 use Illuminate\Support\Facades\Auth;
@@ -40,6 +41,11 @@ Route::get('/home-search', [JobsController::class, 'home_search_job'])->name('ho
 Route::get('/job/{job}',[JobsController::class, 'show'])->name('single-job'); 
 
 
+//Posts
+Route::get('/feed',[PostController::class, 'index'])->name('posts');
+Route::get('/post/{post}',[PostController::class, 'show'])->name('single-post');
+
+
 //Jobs Category
 Route::get('/category/{name}',[JobCategoryController::class, 'category_page'])->name('category');
 
@@ -56,6 +62,8 @@ Route::group(['middleware' => 'auth'], function(){
 
     //Show profile pages
     Route::get('/profile',[UserProfileController::class,'profile'])->name('profile');
+    Route::get('/write-post',[UserProfileController::class,'write_post'])->name('write-post');
+    Route::get('/my-posts',[UserProfileController::class,'my_posts'])->name('my-posts');
     Route::get('/post-job',[UserProfileController::class,'post_job'])->name('post-job');
     Route::get('/my-jobs',[UserProfileController::class,'my_jobs'])->name('my-jobs');
     Route::get('/applied-jobs',[UserProfileController::class,'applied_jobs'])->name('applied-jobs');
@@ -97,6 +105,14 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/edit-job/{job}',[JobsController::class,'edit'])->name('edit-job');
     Route::put('/update-job/{job}',[JobsController::class,'update'])->name('update-job');
     Route::get('/delete-job/{job}',[JobsController::class,'destroy'])->name('delete-job');
+
+    
+    //For activity and posts
+    Route::post('/create-post',[PostController::class,'store'])->name('create-post');
+    Route::get('/delete-post/{post}',[PostController::class,'destroy'])->name('delete-post');
+    Route::get('/edit-post/{post}', [PostController::class,'edit'])->name('edit-post');
+    Route::put('/update-post/{post}', [PostController::class,'update'])->name('update-post');
+    
 
 
     //For applied jobs
